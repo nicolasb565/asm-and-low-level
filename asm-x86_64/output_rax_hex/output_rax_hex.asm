@@ -53,14 +53,14 @@ _start:
         test rcx, rcx ; test perform bitwise AND on its two operands and discard the result, sets SF, ZF, PF
         jnz .loop ; if ZF (zero flag) not set loop again
         
-        ;write new line...
-        mov rax, 1
-        push 10
-        mov rsi, rsp
-        syscall
+    ;write new line...
+    mov rax, 1
+    push 10
+    mov rsi, rsp
+    syscall
         
-        ;return 0
-        mov rax, 60
-        xor rdi,rdi
-        syscall
+    ;return 0
+    mov rax, 60
+    xor rdi,rdi
+    syscall
     
