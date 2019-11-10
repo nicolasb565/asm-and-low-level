@@ -13,8 +13,8 @@ static void print_list(list_node_t head){
     printf("end \n");
 }
 
-void linked_list_append(list_node_t node, void* data){
-    if(node == NULL){ return; }
+void linked_list_append(list_node_t* head, void* data){
+    if(head == NULL){ return; }
     list_node_t new_tail = malloc(sizeof(struct list_node));
     if(new_tail){
         new_tail->next = NULL;
@@ -22,7 +22,10 @@ void linked_list_append(list_node_t node, void* data){
     }
     
     list_node_t prev = NULL;
-    list_node_t cur = node;
+    list_node_t cur = *head;
+    if(cur == NULL){
+        *head = new_tail;
+    }
     while(cur != NULL){
         prev = cur;
         cur = cur->next;
@@ -107,7 +110,7 @@ int main(void){
     linked_list_insert(&list, 3, &c);
     linked_list_insert(&list, 4, &d);
     linked_list_insert(&list, 1000, &d);
-    linked_list_append(list, &e);
+    linked_list_append(&list, &e);
     printf("should see -1 -> 0 -> 1 -> 1 -> 2 -> 2 -> 1111 -> end\n");
     print_list(list);
     
@@ -147,6 +150,11 @@ int main(void){
     printf("list should be empty...\n");
     print_list(list);
     assert(list == NULL);
+    
+    linked_list_append(&list, &a);
+    linked_list_append(&list, &b);
+    printf("should see -1 -> 0 -> end\n");
+    print_list(list);
     
     linked_list_insert(&list, 0, &b);
     linked_list_insert(&list, -1, &a);
