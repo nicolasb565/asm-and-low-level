@@ -5,7 +5,6 @@
 struct buffer{
     void* data;
     size_t capacity;
-    size_t length;
 };
 typedef struct buffer* buffer_t;
 
