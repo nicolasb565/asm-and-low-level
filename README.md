@@ -1,2 +1,2 @@
 # asm-and-low-level
-based on the book Low-Level Programming by Igor Zhirkov
+random code on algorithms and datastructures, assembly language, or anything low level
