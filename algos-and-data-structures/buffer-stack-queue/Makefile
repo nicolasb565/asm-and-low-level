@@ -4,4 +4,4 @@ all: buffer.c buffer.h stack.c stack.h
 	
 .PHONY: clean
 clean:
-	rm buffer
+	rm buffer stack
