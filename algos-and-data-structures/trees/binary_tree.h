@@ -13,6 +13,6 @@ struct binary_tree{
 };
 typedef struct binary_tree* binary_tree_t;
 
-binary_tree_node_t binary_tree_create(binary_tree_t root);
+void binary_tree_create(binary_tree_t root);
 binary_tree_node_t binary_tree_insert(binary_tree_t root, void* data);
 #endif

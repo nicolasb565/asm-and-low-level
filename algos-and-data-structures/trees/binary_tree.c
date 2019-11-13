@@ -44,16 +44,12 @@ static binary_tree_node_t binary_tree_insert_internal(binary_tree_node_t node, v
     }
 }
 
-static void binary_tree_balance(binary_tree_t root){
-    assert(root != NULL);
-    /*TODO!!!*/
-}
-
-binary_tree_node_t binary_tree_create(binary_tree_t root){
+void binary_tree_create(binary_tree_t root){
     assert(root != NULL);
     root->root_node.data = NULL;
     root->root_node.left = NULL;
     root->root_node.right = NULL;
+    root->depth = 0;
 }
 
 binary_tree_node_t binary_tree_insert(binary_tree_t root, void* data){
@@ -65,13 +61,8 @@ binary_tree_node_t binary_tree_insert(binary_tree_t root, void* data){
     else{
         root->depth+=1;
         new_node = binary_tree_insert_internal(&root->root_node, data, root->depth);
-        binary_tree_balance(root);
         return new_node;
     }
-}
-
-void printTree(binary_tree_t root){
-    /*TODO!!!*/
 }
 
 int main(){
@@ -85,5 +76,6 @@ int main(){
     binary_tree_insert(&root, &b);
     binary_tree_insert(&root, &c);
     binary_tree_insert(&root, &d);
+    printTree(&root.root_node);
     return 0;
 }
