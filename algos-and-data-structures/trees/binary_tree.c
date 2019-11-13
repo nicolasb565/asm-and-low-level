@@ -76,6 +76,5 @@ int main(){
     binary_tree_insert(&root, &b);
     binary_tree_insert(&root, &c);
     binary_tree_insert(&root, &d);
-    printTree(&root.root_node);
     return 0;
 }
