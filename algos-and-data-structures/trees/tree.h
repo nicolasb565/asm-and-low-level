@@ -59,17 +59,11 @@ binary_tree_node<T, N>* binary_tree_insert_internal(binary_tree_node<T, N>& node
 
 template<typename T, int N>
 binary_tree_node<T, N>* binary_tree_insert(binary_tree<T, N>& root, T& data){
-    binary_tree_node<T, N>* new_node;
-    if(new_node = binary_tree_insert_internal(root.root_node, data, root.depth)){
-        return new_node;
-    }
-    else{
+    binary_tree_node<T, N>* new_node = binary_tree_insert_internal(root.root_node, data, root.depth);
+    if(new_node == nullptr){
         root.depth+=1;
         new_node = binary_tree_insert_internal(root.root_node, data, root.depth);
-        if(new_node == nullptr){
-            root.depth-=1; //probably failed because operator new returned nullptr because we dont have enough memory...
         }
-        return new_node;
-    }
+    return new_node;
 }
 #endif
